@@ -61,6 +61,7 @@ library
     exposed-modules:  Aoc 
                       Aoc.Years.YearExample.DayExample
                       Aoc.Years.Year2015.Day1
+                      Aoc.Years.Year2015.Day2
 
     -- Modules included in this library but not exported.
     -- other-modules: 
@@ -70,7 +71,8 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.21.0.0
+    build-depends:    base ^>=4.21.0.0,
+                      extra ^>= 1.8
 
     -- Directories containing source files.
     hs-source-dirs:   src

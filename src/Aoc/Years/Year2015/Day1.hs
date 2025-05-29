@@ -8,7 +8,6 @@ import Data.List
 data Solve = Solve | Parsed [Int]
 
 instance Solution Solve where
-    day Solve = (2015, 1)
     day _ = (2015, 1)
 
     parse Solve input = Parsed xs
