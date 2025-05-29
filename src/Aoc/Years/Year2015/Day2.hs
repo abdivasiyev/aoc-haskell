@@ -4,7 +4,7 @@ module Aoc.Years.Year2015.Day2 (
 
 import Aoc
 import Data.List.Extra (splitOn)
-import Data.List (minimum, sort)
+import Data.List (sort)
 
 data Solve = Solve | Input [Prism]
 
@@ -23,7 +23,8 @@ instance Solution Solve where
 data Prism = Prism Int Int Int
 
 prism :: [String] -> Prism
-prism xs = Prism (read (xs !! 0) :: Int) (read (xs !! 1) :: Int) (read (xs !! 2) :: Int)
+prism [l, w, h] = Prism (read l) (read w) (read h)
+prism _ = error "invalid prism dimensions"
 
 volume              :: Prism -> Int
 volume (Prism l w h) = l * w * h
@@ -32,10 +33,10 @@ surfaceArea              :: Prism -> Int
 surfaceArea (Prism l w h) = 2 * (l*w + w*h + h*l)
 
 smallestArea              :: Prism -> Int
-smallestArea (Prism l w h) = xs !! 0 * xs !! 1 
-    where xs = sort [l, w, h]
+smallestArea (Prism l w h) = 
+    let [a, b, _] = sort [l, w, h] in a * b
 
 smallestPerimeter              :: Prism -> Int
-smallestPerimeter (Prism l w h) = 2 * (xs !! 0 + xs !! 1)
-    where xs = sort [l, w, h]
+smallestPerimeter (Prism l w h) =
+    let [a, b, _] = sort [l, w, h] in 2 * (a+b)
 
