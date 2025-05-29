@@ -1,23 +1,23 @@
 module Aoc.Years.Year2015.Day1 (
-    Solve(..)
+    Day1(..)
 ) where
 
 import Aoc
 import Data.List
 
-data Solve = Solve | Parsed [Int]
+data Day1 = Day1 | Parsed [Int]
 
-instance Solution Solve where
+instance Solution Day1 where
     day _ = (2015, 1)
 
-    parse Solve input = Parsed xs
+    parse Day1 input = Parsed xs
        where xs = [x | y <- head . words $ input, let x = if y == '(' then 1 else -1]
-    parse x _ = x
+    parse _ _         = undefined
 
     part1 (Parsed xs) = [show . sum $ xs]
-    part1 _ = ["unsolved"]
+    part1 _           = undefined
 
     part2 (Parsed xs) = [show $ go 0 0 xs]
        where go   _ i    []  = i
              go acc i (y:ys) = if acc + y == -1 then i + 1 else go (acc + y) (i + 1) ys
-    part2 _ = ["unsolved"]
+    part2 _           = undefined

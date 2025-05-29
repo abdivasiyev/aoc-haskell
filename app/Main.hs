@@ -10,8 +10,8 @@ main :: IO ()
 main = do
     let runner = Runner Last [
                     AnySolution YearExampleDayExample.Example,
-                    AnySolution Year2015Day1.Solve,
-                    AnySolution Year2015Day2.Solve
+                    AnySolution Year2015Day1.Day1,
+                    AnySolution Year2015Day2.Day2
                 ]
 
     run runner
