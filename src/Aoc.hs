@@ -8,6 +8,7 @@ module Aoc (
    , RunnerMode(..)
    , Runner(..)
    , run
+   , splitByPosition
 ) where
 
 import Text.Printf
@@ -52,3 +53,7 @@ run (Runner m ss) = case m of
              Single (y, d) -> case find (dayMatches y d) ss of
                                    Nothing -> putStrLn "Solution not found"
                                    Just s -> solve s
+
+splitByPosition :: [a] -> ([a], [a])
+splitByPosition [] = ([], [])
+splitByPosition (x:xs) = let (odds, evens) = splitByPosition xs in (x:evens, odds)
