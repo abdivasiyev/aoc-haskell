@@ -1,17 +1,17 @@
 module Aoc.Years.Year2015.Day1 (
-    Input(..)
+    Solve(..)
 ) where
 
 import Aoc
 import Data.List
 
-data Input = Input | Parsed [Int]
+data Solve = Solve | Parsed [Int]
 
-instance Solution Input where
-    day Input = (2015, 1)
+instance Solution Solve where
+    day Solve = (2015, 1)
     day _ = (2015, 1)
 
-    parse Input input = Parsed xs
+    parse Solve input = Parsed xs
        where xs = [x | y <- head . words $ input, let x = if y == '(' then 1 else -1]
     parse x _ = x
 
