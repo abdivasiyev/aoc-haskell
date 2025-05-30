@@ -63,6 +63,7 @@ library
                       Aoc.Years.Year2015.Day1
                       Aoc.Years.Year2015.Day2
                       Aoc.Years.Year2015.Day3
+                      Aoc.Years.Year2015.Day4
 
     -- Modules included in this library but not exported.
     -- other-modules: 
@@ -74,7 +75,10 @@ library
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.21.0.0,
                       extra ^>= 1.8,
-					  containers ^>= 0.8
+					  containers ^>= 0.7,
+					  bytestring,
+					  memory,
+					  cryptonite
 
     -- Directories containing source files.
     hs-source-dirs:   src

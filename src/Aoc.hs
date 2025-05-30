@@ -1,4 +1,5 @@
 {-# Language ExistentialQuantification #-}
+{-# Language OverloadedStrings #-}
 
 module Aoc (
      Year
@@ -9,11 +10,15 @@ module Aoc (
    , Runner(..)
    , run
    , splitByPosition
+   , md5sum
 ) where
 
-import Text.Printf
-import Data.List
-import Control.Monad
+import           Text.Printf
+import           Data.List
+import           Control.Monad
+import qualified Data.ByteString.Char8 as BS
+import           Crypto.Hash (hashWith, MD5 (..), Digest)
+import           Data.ByteArray.Encoding (convertToBase, Base(Base16))
 
 type Year = Int
 type Day  = Int
@@ -57,3 +62,9 @@ run (Runner m ss) = case m of
 splitByPosition :: [a] -> ([a], [a])
 splitByPosition [] = ([], [])
 splitByPosition (x:xs) = let (odds, evens) = splitByPosition xs in (x:evens, odds)
+
+md5sum :: String -> String
+md5sum xs = let bs = BS.pack xs 
+                digest :: Digest MD5
+                digest = hashWith MD5 bs
+            in BS.unpack $ convertToBase Base16 digest
