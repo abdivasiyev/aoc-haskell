@@ -11,7 +11,7 @@ instance Solution Day1 where
     day _ = (2015, 1)
 
     parse Day1 input = Parsed xs
-       where xs = [x | y <- head . words $ input, let x = if y == '(' then 1 else -1]
+       where xs = [x | y <- head . words $ head input, let x = if y == '(' then 1 else -1]
     parse _ _         = undefined
 
     part1 (Parsed xs) = [show . sum $ xs]

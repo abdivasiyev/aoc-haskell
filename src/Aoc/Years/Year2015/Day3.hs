@@ -10,7 +10,7 @@ data Day3 = Day3 | Input [Loc]
 instance Solution Day3 where
     day _ = (2015, 3)
 
-    parse Day3 input = Input [readLoc y | y <- head . lines $ input] 
+    parse Day3 input = Input [readLoc y | y <- head input] 
 
     part1 (Input locs) = [show . Set.size . deliver $ locs]
     part1 _            = undefined

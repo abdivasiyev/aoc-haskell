@@ -11,7 +11,7 @@ data Day2 = Day2 | Input [Prism]
 instance Solution Day2 where
     day _ = (2015, 2)
 
-    parse Day2 input = Input . map prism . map (splitOn "x") . lines $ input 
+    parse Day2 input = Input . map prism . map (splitOn "x") $ input 
     parse _ _         = undefined
 
     part1 (Input xs) = [show . sum . map (\x -> surfaceArea x + smallestArea x) $ xs]

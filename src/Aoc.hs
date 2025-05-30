@@ -17,15 +17,14 @@ import           Text.Printf
 import           Data.List
 import           Control.Monad
 import qualified Data.ByteString.Char8 as BS
-import           Crypto.Hash (hashWith, MD5 (..), Digest)
-import           Data.ByteArray.Encoding (convertToBase, Base(Base16))
+import           Crypto.Hash (hashWith, MD5 (..))
 
 type Year = Int
 type Day  = Int
 
 class Solution a where
     day   :: a      -> (Year, Day)
-    parse :: a      -> String      -> a
+    parse :: a      -> [String]    -> a
     part1 :: a      -> [String]
     part2 :: a      -> [String]
 
@@ -40,7 +39,7 @@ solve (AnySolution s) = do
     let (y, d) = day s
     let inputPath = intercalate "_" [printf "%04d" y, printf "%02d" d] <> ".txt"
     input <- readFile inputPath
-    let s' = parse s input
+    let s' = parse s $ lines input
     let p1 = part1 s'
     let p2 = part2 s'
 
@@ -64,7 +63,4 @@ splitByPosition [] = ([], [])
 splitByPosition (x:xs) = let (odds, evens) = splitByPosition xs in (x:evens, odds)
 
 md5sum :: String -> String
-md5sum xs = let bs = BS.pack xs 
-                digest :: Digest MD5
-                digest = hashWith MD5 bs
-            in BS.unpack $ convertToBase Base16 digest
+md5sum xs = show . hashWith MD5 . BS.pack $ xs
