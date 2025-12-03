@@ -9,7 +9,9 @@ data Day5 = Day5 | Input String
 
 instance Solution Day5 where
   day Day5 = (2025, 5)
+  day _ = undefined
   parse Day5 input = Input $ head input
+  parse _ _ = undefined
   part1 (Input _) = ["unsolved"]
   part1 _ = undefined
   part2 (Input _) = ["unsolved"]
