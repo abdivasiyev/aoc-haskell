@@ -64,6 +64,7 @@ library
                       Aoc.Years.Year2015.Day2
                       Aoc.Years.Year2015.Day3
                       Aoc.Years.Year2015.Day4
+                      Aoc.Years.Year2025.Day1
 
     -- Modules included in this library but not exported.
     -- other-modules: 
@@ -73,9 +74,9 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.21.0.0,
-                      extra ^>= 1.8,
-					  containers ^>= 0.7,
+    build-depends:    base,
+                      extra,
+					  containers,
 					  bytestring,
 					  memory,
 					  cryptonite
