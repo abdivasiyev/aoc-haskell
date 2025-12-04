@@ -29,7 +29,10 @@ instance Solution Day2 where
       doubled :: ID -> Bool
       doubled x = even len && take (len `div` 2) x' == drop (len `div` 2) x'
         where
+          x' :: String
           x' = show x
+
+          len :: Int
           len = length x'
   part1 _ = undefined
   part2 (Input xs) = [show . solve repeated $ xs]
